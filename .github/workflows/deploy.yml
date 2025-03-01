@@ -39,5 +39,5 @@ jobs:
             echo "Deployed prod"
           END
 
-          scp -o StrictHostKeyChecking=no deploy.sh builder@build4.gonative.io:deploy.sh
-          ssh -o StrictHostKeyChecking=no builder@build4.gonative.io bash --login ./deploy.sh
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null deploy.sh builder@build4.gonative.io:deploy.sh
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null builder@build4.gonative.io bash --login ./deploy.sh
