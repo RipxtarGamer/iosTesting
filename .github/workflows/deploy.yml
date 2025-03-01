@@ -19,8 +19,6 @@ jobs:
         run: |
           echo "Deploying build4.gonative.io"
           
-          ssh-keyscan build4.gonative.io >> ~/.ssh/known_hosts
-
           cat > deploy.sh << 'END'
             #!/bin/bash
             set -e
@@ -41,5 +39,5 @@ jobs:
             echo "Deployed prod"
           END
 
-          scp deploy.sh builder@build4.gonative.io:deploy.sh
-          ssh builder@build4.gonative.io bash --login ./deploy.sh
+          scp -o StrictHostKeyChecking=no deploy.sh builder@build4.gonative.io:deploy.sh
+          ssh -o StrictHostKeyChecking=no builder@build4.gonative.io bash --login ./deploy.sh
